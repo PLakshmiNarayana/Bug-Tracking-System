@@ -1,0 +1,78 @@
+<div class="builds-page">
+
+  <app-sidebar></app-sidebar>
+
+  <main class="main-content">
+
+    <header class="topbar">
+      <div>
+        <h1 class="page-title">Builds</h1>
+        <p class="page-sub">{{ builds.length }} build{{ builds.length !== 1 ? 's' : '' }} available</p>
+      </div>
+      <a routerLink="/upload-build" class="btn-upload">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        Upload Build
+      </a>
+    </header>
+
+    <!-- EMPTY STATE -->
+    <div class="empty-state" *ngIf="builds.length === 0">
+      <div class="empty-icon">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+      </div>
+      <p class="empty-title">No builds yet</p>
+      <p class="empty-sub">Upload your first build to get started.</p>
+      <a routerLink="/upload-build" class="btn-upload" style="margin-top:16px">Upload First Build</a>
+    </div>
+
+    <!-- TABLE -->
+    <div class="table-wrap" *ngIf="builds.length > 0">
+      <table class="builds-table">
+        <thead>
+          <tr>
+            <th>Version</th>
+            <th>Project</th>
+            <th>Upload Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let build of builds; let i = index" class="build-row">
+
+            <td>
+              <div class="version-cell">
+                <div class="version-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                </div>
+                <span class="version-tag">{{ build.version }}</span>
+                <span class="latest-badge" *ngIf="i === 0">Latest</span>
+              </div>
+            </td>
+
+            <!-- ✅ NEW: Project Name column -->
+            <td>
+              <span class="project-name" *ngIf="build.projectName">{{ build.projectName }}</span>
+              <span class="unassigned" *ngIf="!build.projectName">—</span>
+            </td>
+
+            <td class="td-date">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              {{ build.uploadedAt | date:'MMM d, yyyy · h:mm a' }}
+            </td>
+
+            <td>
+              <button class="btn-download"
+                (click)="downloadBuild(build)"
+                [disabled]="downloadingId === build.id">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                {{ downloadingId === build.id ? 'Downloading...' : 'Download' }}
+              </button>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+</div>

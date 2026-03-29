@@ -1,0 +1,89 @@
+/* ═══════════════════════════════════
+   Sidebar — BugTracker
+   ═══════════════════════════════════ */
+
+:host {
+  display: block; width: 228px; flex-shrink: 0;
+  height: 100vh; position: sticky; top: 0;
+}
+
+.sidebar {
+  width: 100%; height: 100%;
+  background: var(--gray-900);
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: 28px 16px; overflow-y: auto;
+  font-family: var(--font-body);
+}
+
+.sidebar-top { display: flex; flex-direction: column; gap: 20px; }
+
+/* Brand */
+.brand {
+  display: inline-flex; align-items: center; gap: 10px;
+  text-decoration: none; font-family: var(--font-head);
+  font-size: 1rem; font-weight: 700; color: var(--white); padding: 0 8px;
+}
+.brand-mark {
+  width: 32px; height: 32px; border-radius: 8px;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.12);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--white); flex-shrink: 0;
+}
+
+/* Role badge */
+.role-badge {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 5px 10px; border-radius: 8px;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.3px;
+  background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.5);
+  border: 1px solid rgba(255,255,255,0.08);
+  margin: 0 4px;
+}
+.role-dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.role-admin  { color: #f87060; background: rgba(217,79,53,0.12); border-color: rgba(217,79,53,0.2); }
+.role-dev    { color: #60a5fa; background: rgba(47,111,212,0.12); border-color: rgba(47,111,212,0.2); }
+.role-tester { color: #6ee7b7; background: rgba(36,169,110,0.12); border-color: rgba(36,169,110,0.2); }
+
+/* Nav */
+.sidebar-nav { display: flex; flex-direction: column; gap: 2px; }
+
+.nav-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border-radius: 9px;
+  font-size: 0.88rem; font-weight: 500;
+  color: rgba(255,255,255,0.45); text-decoration: none;
+  transition: background 0.18s, color 0.18s;
+  background: transparent; border: none; cursor: pointer;
+  width: 100%; text-align: left; font-family: var(--font-body);
+}
+.nav-item:hover { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.85); }
+.nav-active { background: rgba(255,255,255,0.1) !important; color: var(--white) !important; }
+
+/* Logout */
+.nav-logout { color: rgba(217,79,53,0.7); margin-top: 4px; }
+.nav-logout:hover { background: rgba(217,79,53,0.1); color: #f87060; }
+
+/* User info */
+.sidebar-bottom { display: flex; flex-direction: column; gap: 8px; }
+
+.user-info {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border-radius: 9px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+}
+.user-avatar {
+  width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0;
+  background: rgba(255,255,255,0.15); color: var(--white);
+  font-family: var(--font-head); font-size: 0.78rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.user-details { min-width: 0; }
+.user-name {
+  font-size: 0.82rem; font-weight: 600; color: var(--white);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.user-role { font-size: 0.7rem; color: rgba(255,255,255,0.35); margin-top: 1px; }
+
+/* Responsive */
+@media (max-width: 900px) { :host { display: none; } }

@@ -1,0 +1,163 @@
+<div class="register-page">
+
+  <!-- LEFT PANEL — Branding -->
+  <div class="register-left">
+    <div class="left-content">
+
+      <a routerLink="/" class="brand">
+        <div class="brand-mark">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+        </div>
+        <span>BugTracker</span>
+      </a>
+
+      <div class="left-hero">
+        <h2 class="left-title">Join your team.<br>Start tracking today.</h2>
+        <p class="left-sub">Create your account and get full visibility over every bug, task, and fix.</p>
+      </div>
+
+      <!-- Role cards -->
+      <div class="role-cards">
+        <div class="role-card">
+          <div class="role-icon role-icon-red">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <div>
+            <p class="role-card-title">Tester</p>
+            <p class="role-card-desc">Report & track bugs across projects</p>
+          </div>
+        </div>
+        <div class="role-card">
+          <div class="role-icon role-icon-blue">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <div>
+            <p class="role-card-title">Developer</p>
+            <p class="role-card-desc">Fix issues & update resolution status</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="left-bg-circle"></div>
+    <div class="left-bg-grid"></div>
+  </div>
+
+  <!-- RIGHT PANEL — Form -->
+  <div class="register-right">
+    <div class="form-card">
+
+      <div class="form-header">
+        <h1 class="form-title">Create account</h1>
+        <p class="form-sub">Fill in your details to get started</p>
+      </div>
+
+      <div class="form-body">
+
+        <!-- Name -->
+        <div class="field-group">
+          <label class="field-label" for="name">Full name</label>
+          <div class="field-wrap">
+            <span class="field-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </span>
+            <input
+              id="name"
+              class="field-input"
+              type="text"
+              placeholder="John Doe"
+              [(ngModel)]="name"
+            />
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="field-group">
+          <label class="field-label" for="email">Email address</label>
+          <div class="field-wrap">
+            <span class="field-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </span>
+            <input
+              id="email"
+              class="field-input"
+              type="email"
+              placeholder="you@example.com"
+              [(ngModel)]="email"
+            />
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="field-group">
+          <label class="field-label" for="password">Password</label>
+          <div class="field-wrap">
+            <span class="field-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </span>
+            <input
+              id="password"
+              class="field-input"
+              type="password"
+              placeholder="Create a password"
+              [(ngModel)]="password"
+            />
+          </div>
+        </div>
+
+        <!-- Role -->
+        <div class="field-group">
+          <label class="field-label" for="role">I am a...</label>
+          <div class="field-wrap">
+            <span class="field-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </span>
+            <select
+              id="role"
+              class="field-input field-select"
+              [(ngModel)]="role"
+            >
+              <option value="TESTER">Tester — Report & track bugs</option>
+              <option value="DEVELOPER">Developer — Fix & resolve issues</option>
+            </select>
+            <span class="select-arrow">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </div>
+        </div>
+
+        <!-- Role badge -->
+        <div class="role-badge" [class.role-badge-dev]="role === 'DEVELOPER'">
+          <span class="role-badge-dot"></span>
+          <span *ngIf="role === 'TESTER'">Tester — You'll report and track bugs</span>
+          <span *ngIf="role === 'DEVELOPER'">Developer — You'll fix and resolve issues</span>
+        </div>
+
+        <button class="btn-register" (click)="register()">
+          Create Account
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+
+        <div class="form-divider">
+          <span>Already have an account?</span>
+        </div>
+
+        <a routerLink="/login" class="btn-login-link">
+          Sign in instead
+        </a>
+
+      </div>
+    </div>
+    <!-- ✅ ADD THIS TOAST just before the closing </div> of login-right / register-right -->
+
+<div class="toast" [class.toast-show]="showToast" [class.toast-success]="toastType === 'success'" [class.toast-error]="toastType === 'error'">
+  <span class="toast-icon">
+    <svg *ngIf="toastType === 'success'" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+    <svg *ngIf="toastType === 'error'" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </span>
+  {{ toastMessage }}
+</div>
+  </div>
+
+</div>

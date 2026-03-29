@@ -1,0 +1,114 @@
+/* ═══════════════════════════════════
+   Assigned Bugs — BugTracker
+   ═══════════════════════════════════ */
+
+:host { display: block; min-height: 100vh; }
+
+.assigned-page {
+  display: flex; min-height: 100vh;
+  font-family: var(--font-body);
+  background: var(--off-white);
+}
+
+/* ── MAIN ── */
+.main-content {
+  flex: 1; padding: 36px 40px;
+  display: flex; flex-direction: column; gap: 28px;
+  overflow-y: auto;
+}
+
+/* Topbar */
+.topbar {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  animation: fadeUp 0.4s ease both;
+}
+.page-title {
+  font-family: var(--font-head); font-size: 1.7rem; font-weight: 800;
+  color: var(--gray-900); letter-spacing: -0.8px; margin-bottom: 4px;
+}
+.page-sub { font-size: 0.88rem; color: var(--gray-400); font-weight: 300; }
+
+/* ── EMPTY STATE ── */
+.empty-state {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 10px;
+  padding: 80px 24px; text-align: center;
+  background: var(--white); border: 1px solid var(--gray-200);
+  border-radius: var(--radius); box-shadow: var(--shadow-sm);
+  animation: fadeUp 0.4s 0.1s ease both;
+}
+.empty-icon {
+  width: 68px; height: 68px; border-radius: 16px;
+  background: rgba(36,169,110,0.08); color: var(--accent-3);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 8px;
+}
+.empty-title { font-family: var(--font-head); font-size: 1.1rem; font-weight: 700; color: var(--gray-900); }
+.empty-sub { font-size: 0.88rem; color: var(--gray-400); font-weight: 300; }
+
+/* ── TABLE ── */
+.table-wrap {
+  background: var(--white); border: 1px solid var(--gray-200);
+  border-radius: var(--radius); overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  animation: fadeUp 0.4s 0.1s ease both;
+}
+.bugs-table { width: 100%; border-collapse: collapse; }
+.bugs-table thead tr {
+  border-bottom: 1px solid var(--gray-200);
+  background: var(--gray-50);
+}
+.bugs-table th {
+  padding: 13px 18px;
+  font-family: var(--font-head); font-size: 0.72rem; font-weight: 700;
+  color: var(--gray-400); letter-spacing: 0.8px; text-transform: uppercase;
+  text-align: left;
+}
+.bug-row { border-bottom: 1px solid var(--gray-100); transition: background 0.15s; }
+.bug-row:last-child { border-bottom: none; }
+.bug-row:hover { background: var(--gray-50); }
+.bugs-table td { padding: 14px 18px; font-size: 0.88rem; color: var(--gray-700); vertical-align: middle; }
+
+.td-id { font-family: var(--font-head); font-size: 0.78rem; font-weight: 700; color: var(--gray-400); }
+.bug-title { font-weight: 500; color: var(--gray-900); }
+
+/* Priority */
+.priority { display: inline-flex; align-items: center; gap: 6px; font-size: 0.78rem; font-weight: 600; }
+.priority-dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; opacity: 0.75; }
+.priority-critical { color: var(--accent); }
+.priority-high     { color: #ea580c; }
+.priority-medium   { color: #ca8a04; }
+.priority-low      { color: var(--accent-3); }
+
+/* Status badges */
+.badge { display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 100px; font-size: 0.72rem; font-weight: 600; }
+.badge-open     { background: rgba(234,88,12,0.08);  color: #ea580c; }
+.badge-progress { background: rgba(47,111,212,0.08); color: var(--accent-2); }
+.badge-resolved { background: var(--accent-3-soft);  color: var(--accent-3); }
+.badge-closed   { background: var(--gray-100);        color: var(--gray-400); }
+
+/* View button */
+.btn-view {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 6px 14px; border-radius: 8px;
+  background: var(--white); color: var(--gray-800);
+  border: 1.5px solid var(--gray-200);
+  font-size: 0.78rem; font-weight: 600; text-decoration: none;
+  transition: all 0.18s;
+}
+.btn-view:hover { background: var(--gray-900); color: var(--white); border-color: var(--gray-900); }
+.btn-view svg { transition: transform 0.18s; }
+.btn-view:hover svg { transform: translateX(2px); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) { .main-content { padding: 24px 16px; } }
+@media (max-width: 600px) {
+  .bugs-table th:nth-child(3),
+  .bugs-table td:nth-child(3) { display: none; }
+}

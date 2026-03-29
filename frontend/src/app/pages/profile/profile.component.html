@@ -1,0 +1,108 @@
+<div class="profile-page">
+
+  <app-sidebar></app-sidebar>
+
+  <main class="main-content">
+
+    <header class="topbar">
+      <h1 class="page-title">Profile</h1>
+      <p class="page-sub">Your account details</p>
+    </header>
+
+    <!-- LOADING STATE -->
+    <div class="loading-state" *ngIf="!user && !loadError">
+      <div class="loading-spinner"></div>
+      <p>Loading profile...</p>
+    </div>
+
+    <!-- ERROR STATE -->
+    <div class="empty-state" *ngIf="loadError">
+      <p class="empty-title">Failed to load profile</p>
+      <p class="empty-sub">Could not fetch your account details. Please try again.</p>
+    </div>
+
+    <!-- PROFILE CONTENT -->
+    <div class="profile-layout" *ngIf="user">
+
+      <div class="profile-card">
+
+        <div class="avatar-section">
+          <div class="avatar-circle">{{ user.name?.charAt(0) | uppercase }}</div>
+          <div class="avatar-info">
+            <h2 class="profile-name">{{ user.name }}</h2>
+            <span class="role-badge"
+              [class.role-admin]="user.role === 'ADMIN'"
+              [class.role-dev]="user.role === 'DEVELOPER'"
+              [class.role-tester]="user.role === 'TESTER'">
+              <span class="role-dot"></span>
+              {{ user.role | titlecase }}
+            </span>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="detail-rows">
+
+          <div class="detail-row">
+            <span class="detail-key">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              Full Name
+            </span>
+            <span class="detail-val">{{ user.name }}</span>
+          </div>
+
+          <div class="detail-row">
+            <span class="detail-key">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              Email
+            </span>
+            <span class="detail-val">{{ user.email }}</span>
+          </div>
+
+          <div class="detail-row" style="border-bottom: none">
+            <span class="detail-key">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Role
+            </span>
+            <span class="detail-val">{{ user.role | titlecase }}</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="info-card">
+        <h3 class="info-title">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Role Permissions
+        </h3>
+        <div class="permission-list">
+
+          <ng-container *ngIf="user.role === 'ADMIN'">
+            <div class="permission-item"><span class="perm-icon perm-red"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>View & manage all bugs</div>
+            <div class="permission-item"><span class="perm-icon perm-red"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Upload & manage builds</div>
+            <div class="permission-item"><span class="perm-icon perm-red"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Assign bugs to developers</div>
+            <div class="permission-item"><span class="perm-icon perm-red"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>View activity logs</div>
+          </ng-container>
+
+          <ng-container *ngIf="user.role === 'DEVELOPER'">
+            <div class="permission-item"><span class="perm-icon perm-blue"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>View all & assigned bugs</div>
+            <div class="permission-item"><span class="perm-icon perm-blue"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Update bug status</div>
+            <div class="permission-item"><span class="perm-icon perm-blue"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Add comments to bugs</div>
+            <div class="permission-item"><span class="perm-icon perm-blue"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Upload & download builds</div>
+          </ng-container>
+
+          <ng-container *ngIf="user.role === 'TESTER'">
+            <div class="permission-item"><span class="perm-icon perm-green"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Report new bugs</div>
+            <div class="permission-item"><span class="perm-icon perm-green"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Download builds</div>
+            <div class="permission-item"><span class="perm-icon perm-green"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Upload screenshots</div>
+          </ng-container>
+
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+</div>

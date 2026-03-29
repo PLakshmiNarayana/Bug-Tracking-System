@@ -1,0 +1,108 @@
+/* ═══════════════════════════════════
+   Activity — BugTracker
+   ═══════════════════════════════════ */
+
+:host { display: block; min-height: 100vh; }
+
+.activity-page {
+  display: flex; min-height: 100vh;
+  font-family: var(--font-body);
+  background: var(--off-white);
+}
+
+/* ── MAIN ── */
+.main-content {
+  flex: 1; padding: 36px 40px;
+  display: flex; flex-direction: column; gap: 28px;
+  overflow-y: auto;
+}
+
+/* Topbar */
+.topbar { animation: fadeUp 0.4s ease both; }
+.page-title {
+  font-family: var(--font-head); font-size: 1.7rem; font-weight: 800;
+  color: var(--gray-900); letter-spacing: -0.8px; margin-bottom: 4px;
+}
+.page-sub { font-size: 0.88rem; color: var(--gray-400); font-weight: 300; }
+
+/* ── EMPTY STATE ── */
+.empty-state {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 10px;
+  padding: 80px 24px; text-align: center;
+  background: var(--white); border: 1px solid var(--gray-200);
+  border-radius: var(--radius); box-shadow: var(--shadow-sm);
+  animation: fadeUp 0.4s 0.1s ease both;
+}
+.empty-icon {
+  width: 68px; height: 68px; border-radius: 16px;
+  background: var(--gray-100); color: var(--gray-400);
+  display: flex; align-items: center; justify-content: center; margin-bottom: 8px;
+}
+.empty-title { font-family: var(--font-head); font-size: 1.1rem; font-weight: 700; color: var(--gray-900); }
+.empty-sub { font-size: 0.88rem; color: var(--gray-400); font-weight: 300; }
+
+/* ── TIMELINE ── */
+.timeline {
+  display: flex; flex-direction: column;
+  max-width: 720px;
+  animation: fadeUp 0.4s 0.1s ease both;
+}
+
+.timeline-item {
+  display: flex; gap: 16px;
+}
+
+/* Left: dot + line */
+.timeline-left {
+  display: flex; flex-direction: column; align-items: center;
+  flex-shrink: 0;
+}
+
+.timeline-dot {
+  width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
+  background: var(--white); border: 2px solid var(--gray-200);
+  color: var(--accent-2);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-xs);
+  z-index: 1;
+}
+
+.timeline-line {
+  width: 2px; flex: 1;
+  background: var(--gray-100);
+  margin: 6px 0;
+  min-height: 20px;
+}
+
+/* Card */
+.timeline-card {
+  flex: 1; background: var(--white);
+  border: 1px solid var(--gray-200); border-radius: var(--radius);
+  padding: 16px 20px; margin-bottom: 12px;
+  box-shadow: var(--shadow-xs);
+  transition: box-shadow 0.18s, transform 0.18s;
+}
+.timeline-card:hover {
+  box-shadow: var(--shadow-sm); transform: translateX(3px);
+}
+
+.activity-message {
+  font-size: 0.9rem; font-weight: 500;
+  color: var(--gray-800); line-height: 1.55;
+  margin-bottom: 10px;
+}
+
+.activity-footer {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 0.75rem; color: var(--gray-400);
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) { .main-content { padding: 24px 16px; } }

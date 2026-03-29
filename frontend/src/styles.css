@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --font-head: 'Sora', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --white: #ffffff;
+  --off-white: #f8f7f4;
+  --gray-900: #1a1916;
+  --accent: #d94f35;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: #f8f7f4;
+  font-family: 'DM Sans', sans-serif;
+  color: #1a1916;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Fix for Angular encapsulation blocking gradient text */
+.title-accent {
+  background: linear-gradient(135deg, #d94f35 0%, #e8754a 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  font-style: italic;
+}

@@ -1,0 +1,98 @@
+<div class="bugs-page">
+
+  <app-sidebar></app-sidebar>
+
+  <main class="main-content">
+
+    <header class="topbar">
+      <div class="topbar-left">
+        <h1 class="page-title">All Bugs</h1>
+        <p class="page-sub">{{ bugs.length }} issue{{ bugs.length !== 1 ? 's' : '' }} found</p>
+      </div>
+      <a routerLink="/create-bug" class="btn-report">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        Report Bug
+      </a>
+    </header>
+
+    <div class="empty-state" *ngIf="bugs.length === 0">
+      <div class="empty-icon">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </div>
+      <p class="empty-title">No bugs found</p>
+      <p class="empty-sub">Your project is looking clean! Report a bug if you find one.</p>
+      <a routerLink="/create-bug" class="btn-report" style="margin-top:16px">Report First Bug</a>
+    </div>
+
+    <div class="table-wrap" *ngIf="bugs.length > 0">
+      <table class="bugs-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Project</th>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Priority</th>
+            <th>Assigned To</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let bug of bugs" class="bug-row">
+
+            <td class="td-id">#{{ bug.id }}</td>
+
+            <!-- ✅ NEW: Project Name column -->
+            <td>
+              <span class="project-name" *ngIf="bug.projectName">{{ bug.projectName }}</span>
+              <span class="unassigned" *ngIf="!bug.projectName">—</span>
+            </td>
+
+            <td class="td-title">
+              <span class="bug-title">{{ bug.title }}</span>
+            </td>
+
+            <td>
+              <span class="badge"
+                [class.badge-open]="bug.status === 'OPEN'"
+                [class.badge-assigned]="bug.status === 'ASSIGNED'"
+                [class.badge-progress]="bug.status === 'IN_PROGRESS'"
+                [class.badge-resolved]="bug.status === 'RESOLVED'"
+                [class.badge-closed]="bug.status === 'CLOSED'">
+                {{ bug.status | titlecase }}
+              </span>
+            </td>
+
+            <td>
+              <span class="priority"
+                [class.priority-critical]="bug.priority === 'CRITICAL'"
+                [class.priority-high]="bug.priority === 'HIGH'"
+                [class.priority-medium]="bug.priority === 'MEDIUM'"
+                [class.priority-low]="bug.priority === 'LOW'">
+                <span class="priority-dot"></span>
+                {{ bug.priority | titlecase }}
+              </span>
+            </td>
+
+            <td class="td-assigned">
+              <div class="assignee" *ngIf="bug.assignedTo">
+                <div class="avatar">{{ bug.assignedTo?.name?.charAt(0) | uppercase }}</div>
+                <span>{{ bug.assignedTo?.name }}</span>
+              </div>
+              <span class="unassigned" *ngIf="!bug.assignedTo">Unassigned</span>
+            </td>
+
+            <td>
+              <a [routerLink]="'/bugs/' + bug.id" class="btn-view">
+                View
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+</div>

@@ -1,0 +1,119 @@
+:host { display: block; min-height: 100vh; }
+
+.history-page {
+  display: flex; min-height: 100vh;
+  font-family: var(--font-body); background: var(--off-white);
+}
+
+.main-content {
+  flex: 1; padding: 36px 40px;
+  display: flex; flex-direction: column; gap: 28px; overflow-y: auto;
+}
+
+/* Topbar */
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  animation: fadeUp 0.4s ease both;
+}
+.topbar-left { display: flex; align-items: center; gap: 20px; }
+
+.btn-back {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 8px 16px; border-radius: 9px;
+  background: var(--white); color: var(--gray-600);
+  font-size: 0.85rem; font-weight: 500; text-decoration: none;
+  border: 1.5px solid var(--gray-200); box-shadow: var(--shadow-xs);
+  transition: all 0.18s; white-space: nowrap; flex-shrink: 0;
+}
+.btn-back:hover { background: var(--gray-100); transform: translateY(-1px); }
+
+.page-title {
+  font-family: var(--font-head); font-size: 1.5rem; font-weight: 800;
+  color: var(--gray-900); letter-spacing: -0.6px; margin-bottom: 2px;
+}
+.page-sub { font-size: 0.82rem; color: var(--gray-400); font-weight: 300; }
+
+.history-count {
+  padding: 6px 14px; border-radius: 100px;
+  background: var(--white); border: 1.5px solid var(--gray-200);
+  font-size: 0.78rem; font-weight: 600; color: var(--gray-600);
+  box-shadow: var(--shadow-xs);
+}
+
+/* Empty state */
+.empty-state {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 10px; padding: 80px 24px; text-align: center;
+  background: var(--white); border: 1px solid var(--gray-200);
+  border-radius: var(--radius); box-shadow: var(--shadow-sm);
+  animation: fadeUp 0.4s 0.1s ease both;
+}
+.empty-icon {
+  width: 68px; height: 68px; border-radius: 16px;
+  background: var(--gray-100); color: var(--gray-300);
+  display: flex; align-items: center; justify-content: center; margin-bottom: 8px;
+}
+.empty-title { font-family: var(--font-head); font-size: 1.1rem; font-weight: 700; color: var(--gray-900); }
+.empty-sub { font-size: 0.88rem; color: var(--gray-400); }
+
+/* Timeline */
+.timeline {
+  display: flex; flex-direction: column; max-width: 680px;
+  animation: fadeUp 0.4s 0.1s ease both;
+}
+.timeline-item { display: flex; gap: 16px; }
+
+.timeline-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+.timeline-dot {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--white); border: 2px solid var(--gray-200);
+  color: var(--accent-2);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-xs); z-index: 1; flex-shrink: 0;
+}
+.timeline-line {
+  width: 2px; flex: 1; background: var(--gray-100);
+  margin: 6px 0; min-height: 20px;
+}
+
+/* Card */
+.timeline-card {
+  flex: 1; background: var(--white);
+  border: 1px solid var(--gray-200); border-radius: var(--radius);
+  padding: 18px 22px; margin-bottom: 12px;
+  box-shadow: var(--shadow-xs);
+  transition: box-shadow 0.18s, transform 0.18s;
+}
+.timeline-card:hover { box-shadow: var(--shadow-sm); transform: translateX(3px); }
+
+/* Status change row */
+.status-change {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 12px;
+}
+.arrow { color: var(--gray-300); display: flex; align-items: center; }
+
+/* Status badges */
+.status-badge {
+  display: inline-flex; align-items: center;
+  padding: 5px 12px; border-radius: 100px;
+  font-size: 0.75rem; font-weight: 600;
+}
+.badge-assigned { background: rgba(47,111,212,0.08);  color: var(--accent-2); }
+.badge-progress { background: rgba(202,138,4,0.08);   color: #b45309; }
+.badge-resolved { background: var(--accent-3-soft);   color: var(--accent-3); }
+.badge-closed   { background: var(--gray-100);         color: var(--gray-400); }
+
+/* Meta */
+.history-meta {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.75rem; color: var(--gray-400);
+}
+.meta-item { display: flex; align-items: center; gap: 5px; }
+.meta-dot { color: var(--gray-200); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 900px) { .main-content { padding: 24px 16px; } }
+@media (max-width: 600px) { .topbar { flex-direction: column; align-items: flex-start; gap: 12px; } }

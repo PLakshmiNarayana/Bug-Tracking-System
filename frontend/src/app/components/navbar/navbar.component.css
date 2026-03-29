@@ -1,0 +1,64 @@
+/* ═══════════════════════════════════
+   Navbar — BugTracker
+   ═══════════════════════════════════ */
+
+:host { display: block; }
+
+.navbar {
+  height: 60px;
+  background: rgba(248,247,244,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--gray-200);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 28px;
+  position: sticky; top: 0; z-index: 100;
+  font-family: var(--font-body);
+}
+
+/* Brand */
+.brand {
+  display: inline-flex; align-items: center; gap: 10px;
+  text-decoration: none;
+  font-family: var(--font-head); font-size: 0.98rem; font-weight: 700;
+  color: var(--gray-900);
+}
+.brand-mark {
+  width: 30px; height: 30px; border-radius: 8px;
+  background: var(--gray-900); color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Right side */
+.navbar-right {
+  display: flex; align-items: center; gap: 10px;
+}
+
+.user-pill {
+  display: flex; align-items: center; gap: 8px;
+  padding: 5px 12px 5px 6px;
+  background: var(--white); border: 1.5px solid var(--gray-200);
+  border-radius: 100px; box-shadow: var(--shadow-xs);
+}
+.user-avatar {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--gray-900); color: var(--white);
+  font-family: var(--font-head); font-size: 0.72rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.user-name { font-size: 0.82rem; font-weight: 500; color: var(--gray-700); }
+
+.logout-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 7px 14px; border-radius: 9px;
+  background: transparent; color: var(--gray-500);
+  font-family: var(--font-body); font-size: 0.82rem; font-weight: 500;
+  border: 1.5px solid var(--gray-200); cursor: pointer;
+  transition: all 0.18s;
+}
+.logout-btn:hover {
+  background: rgba(217,79,53,0.06);
+  border-color: rgba(217,79,53,0.25);
+  color: var(--accent);
+}

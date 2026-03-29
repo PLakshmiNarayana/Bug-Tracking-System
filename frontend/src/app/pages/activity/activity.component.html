@@ -1,0 +1,51 @@
+<div class="activity-page">
+
+  <app-sidebar></app-sidebar>
+
+  <main class="main-content">
+
+    <header class="topbar">
+      <div>
+        <h1 class="page-title">Activity</h1>
+        <p class="page-sub">{{ activities.length }} event{{ activities.length !== 1 ? 's' : '' }} recorded</p>
+      </div>
+    </header>
+
+    <!-- EMPTY STATE -->
+    <div class="empty-state" *ngIf="activities.length === 0">
+      <div class="empty-icon">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <p class="empty-title">No activity yet</p>
+      <p class="empty-sub">Actions like reporting bugs and status changes will appear here.</p>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="timeline" *ngIf="activities.length > 0">
+      <div class="timeline-item" *ngFor="let act of activities; let last = last">
+
+        <div class="timeline-left">
+          <div class="timeline-dot">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="timeline-line" *ngIf="!last"></div>
+        </div>
+
+        <div class="timeline-card">
+          <!-- ✅ Fixed: was act.message → act.action -->
+          <p class="activity-message">{{ act.action }}</p>
+          <div class="activity-footer">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span class="activity-date">{{ act.performedBy }}</span>
+            <span style="margin: 0 4px; opacity:0.4">·</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <!-- ✅ Fixed: was act.createdAt → act.timestamp -->
+            <span class="activity-date">{{ act.timestamp | date:'MMM d, y · h:mm a' }}</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+</div>

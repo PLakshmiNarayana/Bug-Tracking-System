@@ -1,0 +1,82 @@
+<div class="assigned-page">
+
+  <!-- SIDEBAR -->
+  <app-sidebar></app-sidebar>
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <header class="topbar">
+      <div>
+        <h1 class="page-title">Assigned to Me</h1>
+        <p class="page-sub">{{ bugs.length }} bug{{ bugs.length !== 1 ? 's' : '' }} assigned to you</p>
+      </div>
+    </header>
+
+    <!-- EMPTY STATE -->
+    <div class="empty-state" *ngIf="bugs.length === 0">
+      <div class="empty-icon">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <p class="empty-title">No bugs assigned</p>
+      <p class="empty-sub">You're all caught up! No bugs are currently assigned to you.</p>
+    </div>
+
+    <!-- TABLE -->
+    <div class="table-wrap" *ngIf="bugs.length > 0">
+      <table class="bugs-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let bug of bugs" class="bug-row">
+
+            <td class="td-id">#{{ bug.id }}</td>
+
+            <td class="td-title">
+              <span class="bug-title">{{ bug.title }}</span>
+            </td>
+
+            <td>
+              <span class="priority"
+                [class.priority-critical]="bug.priority === 'CRITICAL'"
+                [class.priority-high]="bug.priority === 'HIGH'"
+                [class.priority-medium]="bug.priority === 'MEDIUM'"
+                [class.priority-low]="bug.priority === 'LOW'">
+                <span class="priority-dot"></span>
+                {{ bug.priority | titlecase }}
+              </span>
+            </td>
+
+            <td>
+              <span class="badge"
+                [class.badge-open]="bug.status === 'OPEN'"
+                [class.badge-assigned]="bug.status === 'ASSIGNED'"
+                [class.badge-progress]="bug.status === 'IN_PROGRESS'"
+                [class.badge-resolved]="bug.status === 'RESOLVED'"
+                [class.badge-closed]="bug.status === 'CLOSED'">
+                {{ bug.status | titlecase }}
+              </span>
+            </td>
+
+            <td>
+              <!-- ✅ Fixed: was '/bug/' now '/bugs/' -->
+              <a [routerLink]="['/bugs', bug.id]" class="btn-view">
+                View
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+</div>

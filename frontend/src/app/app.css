@@ -1,0 +1,14 @@
+/* ═══════════════════════════════════
+   App Layout — BugTracker
+   ═══════════════════════════════════ */
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.app-body {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--off-white);
+}
