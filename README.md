@@ -16,7 +16,6 @@ notifications built in.
 | S. Akthar | Full Stack Developer |
 | S. Krishna Nihar | Full Stack Developer |
 
-> 🎓 TalentSprint Full Stack Developer — Cohort 69
 
 ---
 
