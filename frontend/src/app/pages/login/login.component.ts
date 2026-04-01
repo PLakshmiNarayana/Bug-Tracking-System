@@ -42,7 +42,7 @@ export class LoginComponent {
   login() {
     const data = { email: this.email, password: this.password };
 
-    this.http.post<any>('http://localhost:8080/api/auth/login', data)
+    this.http.post<any>('https://bug-tracking-system-3y60.onrender.com/api/auth/login', data)
       .subscribe({
         next: (res) => {
           const token = res.token;
@@ -55,7 +55,7 @@ export class LoginComponent {
           const name  = payload.name  || email;
 
           // Fetch full user details (including ID) from backend
-          this.http.get<any[]>('http://localhost:8080/api/users', {
+          this.http.get<any[]>('https://bug-tracking-system-3y60.onrender.com/api/users', {
             headers: { Authorization: `Bearer ${token}` }
           }).subscribe({
             next: (users) => {

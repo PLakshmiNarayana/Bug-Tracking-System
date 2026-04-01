@@ -59,7 +59,7 @@ export class BugDetailsComponent implements OnInit, OnDestroy {
 
     // Load developers list if ADMIN
     if (this.currentUserRole === 'ADMIN') {
-      this.http.get<any[]>('http://localhost:8080/api/users')
+      this.http.get<any[]>('https://bug-tracking-system-3y60.onrender.com/api/users')
         .pipe(takeUntil(this.destroy$))
         .subscribe({
           next: (users) => {

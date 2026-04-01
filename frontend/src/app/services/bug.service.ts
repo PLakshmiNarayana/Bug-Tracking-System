@@ -8,7 +8,7 @@ import { Bug } from '../models/bug.model';
 })
 export class BugService {
 
-  private api = "http://localhost:8080/api/bugs";
+  private api = "https://bug-tracking-system-3y60.onrender.com/api/bugs";
 
   constructor(private http: HttpClient) {}
 

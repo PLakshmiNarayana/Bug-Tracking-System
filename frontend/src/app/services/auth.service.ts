@@ -6,7 +6,7 @@ providedIn:'root'
 })
 export class AuthService{
 
-API="http://localhost:8080/api/auth"
+API="https://bug-tracking-system-3y60.onrender.com/api/auth"
 
 constructor(private http:HttpClient){}
 

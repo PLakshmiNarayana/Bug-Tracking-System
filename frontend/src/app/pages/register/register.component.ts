@@ -34,7 +34,7 @@ export class RegisterComponent {
   register() {
     const data = { name: this.name, email: this.email, password: this.password, role: this.role };
 
-    this.http.post('http://localhost:8080/api/auth/register', data)
+    this.http.post('https://bug-tracking-system-3y60.onrender.com/api/auth/register', data)
       .subscribe({
         next: () => {
           this.showNotification('Account created successfully! Redirecting...', 'success');

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ActivityService {
 
-  private api = "http://localhost:8080/api/activity";
+  private api = "https://bug-tracking-system-3y60.onrender.com/api/activity";
 
   constructor(private http: HttpClient) {}
 

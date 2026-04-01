@@ -5,7 +5,7 @@ import { Build } from '../models/build.model';
 @Injectable({ providedIn: 'root' })
 export class BuildService {
 
-  private api = 'http://localhost:8080/api/builds';
+  private api = 'https://bug-tracking-system-3y60.onrender.com/api/builds';
 
   constructor(private http: HttpClient) {}
 

@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({ providedIn: 'root' })
 export class CommentService {
 
-  private api = 'http://localhost:8080/api/comments';
+  private api = 'https://bug-tracking-system-3y60.onrender.com/api/comments';
 
   constructor(private http: HttpClient) {}
 

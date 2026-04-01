@@ -6,7 +6,7 @@ providedIn:'root'
 })
 export class DashboardService{
 
-API="http://localhost:8080/api/dashboard"
+API="https://bug-tracking-system-3y60.onrender.com/api/dashboard"
 
 constructor(private http:HttpClient){}
 
