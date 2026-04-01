@@ -1,22 +1,22 @@
 spring.application.name=bugtracker-backend
 spring.datasource.url=jdbc:mysql://localhost:3306/bugtracker
 spring.datasource.username=root
-spring.datasource.password=your_mysql_password
+spring.datasource.password=Narayana@168737
 
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
-
 spring.servlet.multipart.enabled=true
 spring.servlet.multipart.max-file-size=10MB
 spring.servlet.multipart.max-request-size=10MB
+# Gmail SMTP Configuration
 
 spring.mail.host=smtp.gmail.com
 spring.mail.port=587
-spring.mail.username=your_gmail@gmail.com
-spring.mail.password=your_gmail_app_password
+spring.mail.username=Pottabobby23@gmail.com
+spring.mail.password=xbucptlcwsheyzqe
 
 spring.mail.properties.mail.smtp.auth=true
 spring.mail.properties.mail.smtp.starttls.enable=true
