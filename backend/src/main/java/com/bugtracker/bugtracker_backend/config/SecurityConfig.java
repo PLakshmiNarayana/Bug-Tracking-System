@@ -33,22 +33,15 @@ public class SecurityConfig {
                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             )
             .authorizeHttpRequests(auth -> auth
-                // Public
                 .requestMatchers("/api/auth/**").permitAll()
-                // ✅ Allow screenshot/build file serving without auth
                 .requestMatchers("/uploads/**").permitAll()
-
-                // All authenticated roles
                 .requestMatchers("/api/activity/**").hasAnyRole("ADMIN", "TESTER", "DEVELOPER")
                 .requestMatchers("/api/bugs/**").hasAnyRole("ADMIN", "TESTER", "DEVELOPER")
                 .requestMatchers("/api/comments/**").hasAnyRole("ADMIN", "TESTER", "DEVELOPER")
                 .requestMatchers("/api/users/**").authenticated()
                 .requestMatchers("/api/dashboard/**").authenticated()
                 .requestMatchers("/api/builds/**").hasAnyRole("ADMIN", "TESTER", "DEVELOPER")
-
-                // ✅ Bug history — was missing entirely
                 .requestMatchers("/api/history/**").hasAnyRole("ADMIN", "TESTER", "DEVELOPER")
-
                 .anyRequest().authenticated()
             )
             .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
@@ -59,7 +52,10 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
+        configuration.setAllowedOrigins(Arrays.asList(
+            "http://localhost:4200",
+            "https://bug-tracking-system-zeta.vercel.app"
+        ));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setAllowCredentials(true);
