@@ -2,10 +2,11 @@ spring.application.name=bugtracker-backend
 
 server.port=${PORT:8080}
 
-# 🔥 HARD CODE (TEST PURPOSE)
-spring.datasource.url=jdbc:mysql://interchange.proxy.rlwy.net:56528/railway?useSSL=false&allowPublicKeyRetrieval=true
-spring.datasource.username=root
-spring.datasource.password=CANMRgWyZkCPFNjMmUOKzmhSrmqdCZpV
+spring.datasource.url=${SPRING_DATASOURCE_URL}
+spring.datasource.username=${SPRING_DATASOURCE_USERNAME}
+spring.datasource.password=${SPRING_DATASOURCE_PASSWORD}
+
+spring.datasource.hikari.initialization-fail-timeout=0
 
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 
