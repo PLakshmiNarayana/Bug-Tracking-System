@@ -1,18 +1,17 @@
 spring.application.name=bugtracker-backend
 
-# ✅ CONNECT TO RENDER ENV VARIABLES (MOST IMPORTANT)
-spring.datasource.url=${SPRING_DATASOURCE_URL}
-spring.datasource.username=${SPRING_DATASOURCE_USERNAME}
-spring.datasource.password=${SPRING_DATASOURCE_PASSWORD}
+server.port=${PORT:8080}
 
-# ✅ DRIVER
+# 🔥 HARD CODE (TEST PURPOSE)
+spring.datasource.url=jdbc:mysql://interchange.proxy.rlwy.net:56528/railway?useSSL=false&allowPublicKeyRetrieval=true
+spring.datasource.username=root
+spring.datasource.password=CANMRgWyZkCPFNjMmUOKzmhSrmqdCZpV
+
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 
-# ✅ JPA
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
-
 # ✅ File Upload
 spring.servlet.multipart.enabled=true
 spring.servlet.multipart.max-file-size=10MB
