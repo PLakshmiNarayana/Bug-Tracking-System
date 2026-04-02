@@ -28,13 +28,22 @@ export class ForgotPasswordComponent {
     }
     this.loading = true;
     this.errorMsg = '';
+
+    // Timeout after 60 seconds
+    const timeout = setTimeout(() => {
+      this.loading = false;
+      this.errorMsg = 'Request timed out. Server may be waking up — please try again.';
+    }, 60000);
+
     this.http.post(`${this.api}/forgot-password`, { email: this.email }).subscribe({
       next: () => {
+        clearTimeout(timeout);
         this.submitted = true;
         this.loading = false;
       },
       error: (err) => {
-        this.errorMsg = err.error?.message || 'Something went wrong';
+        clearTimeout(timeout);
+        this.errorMsg = err.error?.message || 'Something went wrong. Please try again.';
         this.loading = false;
       }
     });
