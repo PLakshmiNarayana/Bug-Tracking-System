@@ -15,6 +15,8 @@ import { UploadBuildComponent } from './pages/builds/upload-build/upload-build.c
 import { AssignedBugsComponent } from './pages/assigned-bugs/assigned-bugs.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { BugHistoryComponent } from './pages/bug-history/bug-history.component';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 
 export const routes: Routes = [
 
@@ -22,15 +24,14 @@ export const routes: Routes = [
   { path: '', component: LandingComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'reset-password',  component: ResetPasswordComponent  },
 
   // Protected — all roles
   { path: 'dashboard',    component: DashboardComponent,  canActivate: [authGuard] },
   { path: 'bugs',         component: BugsComponent,       canActivate: [authGuard] },
   { path: 'bugs/:id',     component: BugDetailsComponent, canActivate: [authGuard] },
-
-  // ✅ Fixed: was 'bug-history/:id', HTML links to 'bugs/:id/history'
   { path: 'bugs/:id/history', component: BugHistoryComponent, canActivate: [authGuard] },
-
   { path: 'activity',     component: ActivityComponent,   canActivate: [authGuard] },
   { path: 'profile',      component: ProfileComponent,    canActivate: [authGuard] },
 
@@ -42,7 +43,7 @@ export const routes: Routes = [
     data: { roles: ['TESTER'] }
   },
 
-  // ✅ Fixed: ADMIN needs builds too — added ADMIN to roles
+  // ADMIN + TESTER + DEVELOPER
   {
     path: 'builds',
     component: BuildsListComponent,
@@ -50,7 +51,7 @@ export const routes: Routes = [
     data: { roles: ['ADMIN', 'TESTER', 'DEVELOPER'] }
   },
 
-  // ✅ Fixed: ADMIN needs upload-build too
+  // ADMIN + DEVELOPER
   {
     path: 'upload-build',
     component: UploadBuildComponent,

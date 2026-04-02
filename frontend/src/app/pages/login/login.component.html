@@ -85,6 +85,12 @@
           </div>
         </div>
 
+        <div style="text-align:right; margin-top:-8px; margin-bottom:16px;">
+          <a routerLink="/forgot-password" style="color:#6366f1; font-size:13px; text-decoration:none;">
+            Forgot Password?
+          </a>
+        </div>
+
         <button class="btn-login" (click)="login()">
           Sign In
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -101,15 +107,15 @@
       </div>
 
     </div>
-    <!-- ✅ ADD THIS TOAST just before the closing </div> of login-right / register-right -->
 
-<div class="toast" [class.toast-show]="showToast" [class.toast-success]="toastType === 'success'" [class.toast-error]="toastType === 'error'">
-  <span class="toast-icon">
-    <svg *ngIf="toastType === 'success'" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-    <svg *ngIf="toastType === 'error'" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-  </span>
-  {{ toastMessage }}
-</div>
+    <div class="toast" [class.toast-show]="showToast" [class.toast-success]="toastType === 'success'" [class.toast-error]="toastType === 'error'">
+      <span class="toast-icon">
+        <svg *ngIf="toastType === 'success'" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        <svg *ngIf="toastType === 'error'" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </span>
+      {{ toastMessage }}
+    </div>
+
   </div>
 
 </div>
