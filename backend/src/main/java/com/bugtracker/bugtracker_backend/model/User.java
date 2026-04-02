@@ -23,13 +23,15 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @Column(name = "reset_token")
+    private String resetToken;
+
     public User() {}
 
     public Long getId() {
         return id;
     }
 
-    // required for assignment logic
     public void setId(Long id) {
         this.id = id;
     }
@@ -58,13 +60,19 @@ public class User {
         this.password = password;
     }
 
-    // Updated getter and setter for Role
-
     public Role getRole() {
         return role;
     }
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public String getResetToken() {
+        return resetToken;
+    }
+
+    public void setResetToken(String resetToken) {
+        this.resetToken = resetToken;
     }
 }
